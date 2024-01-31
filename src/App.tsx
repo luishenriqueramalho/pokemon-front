@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Container,
   PokemonCard,
@@ -18,7 +18,6 @@ interface Pokemon {
 }
 
 const App = () => {
-  const navigate = useNavigate();
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [searchField, setSearchField] = useState("");
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
@@ -86,10 +85,6 @@ const App = () => {
   const getPokemonImageUrl = (url: string) => {
     const pokemonId = url.split("/").filter(Boolean).pop();
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
-  };
-
-  const goToAboutPage = () => {
-    navigate("/PokemonDetails"); // Use a rota desejada aqui
   };
 
   return (
